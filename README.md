@@ -1,3 +1,17 @@
+# R3LIVE NTU
+## 1. Docker Installation
+1. Navigate your shell session to the docker folder. e.g., `cd $HOME/github/r3live/docker`
+2. Run `./build.sh` (if required, `chmod +x ./build.sh`)
+3. Configure either `./run.sh` (for linux) or `./run_wslg.sh` (for WSL) to mount local r3live folder into container 
+
+## 2. Config File Information
+| Filename  | Description  |
+|---|---|
+| ntu_config_1.yaml  | from livox_to_rad_rgb calibration  |
+| ntu_config_2.yaml | from calib_rgb(livox)_livox calibration |
+
+<br>
+
 # R3LIVE
 ## A Robust, Real-time, RGB-colored, LiDAR-Inertial-Visual tightly-coupled state Estimation and mapping package
 
