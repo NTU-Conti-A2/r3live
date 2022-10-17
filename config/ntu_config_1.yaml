@@ -1,0 +1,39 @@
+Lidar_front_end:
+   lidar_type: 1   # 1 for Livox-avia, 3 for Ouster-OS1-64
+   N_SCANS: 6
+   using_raw_point: 1
+   point_step: 1
+   
+r3live_common:
+   if_dump_log: 0                   # If recording ESIKF update log. [default = 0]
+   record_offline_map: 1            # If recording offline map. [default = 1]
+   pub_pt_minimum_views: 3          # Publish points which have been render up to "pub_pt_minimum_views" time. [default = 3]
+   minimum_pts_size: 0.01           # The minimum distance for every two points in Global map (unit in meter). [default = 0.01] 
+   image_downsample_ratio: 1        # The downsample ratio of the input image. [default = 1]
+   estimate_i2c_extrinsic: 1        # If enable estimate the extrinsic between camera and IMU. [default = 1] 
+   estimate_intrinsic: 1            # If enable estimate the online intrinsic calibration of the camera lens. [default = 1] 
+   maximum_vio_tracked_pts: 600     # The maximum points for tracking. [default = 600]
+   append_global_map_point_step: 4  # The point step of append point to global map. [default = 4]
+
+r3live_vio:
+   image_width: 640
+   image_height: 480
+   camera_intrinsic:
+      [4.8613328275448112e+02, 0.0, 3.4436854261761141e+02,
+       0.0, 4.8651506019898233e+02, 2.6544927501901833e+02,
+       0.0, 0.0, 1.0]
+   camera_dist_coeffs: [-1.7869275582377572e-01, 1.8932189523758999e-01, -4.7931166934745263e-04, 5.8357525735050008e-05, -1.3581935205323611e-01] #k1, k2, p1, p2, k3
+   # Fine extrinsic value. form camera-LiDAR calibration.
+   camera_ext_R: [ -0.04706228626945703, -0.009594957853831505, 0.9988452040729184, 
+                  -0.9987797281222334, 0.01549650376704175, -0.04691035516686022, 
+                  -0.0150284664751994, -0.9998335223970933, -0.01031266843396576 ]
+   camera_ext_t: [0.06726075867611495, -0.1554232903823319, 0.2303696093220388]
+   
+r3live_lio:        
+   lio_update_point_step: 4   # Point step used for LIO update.  
+   max_iteration: 2           # Maximum times of LIO esikf.
+   lidar_time_delay: 0        # The time-offset between LiDAR and IMU, provided by user. 
+   filter_size_corner: 0.30   
+   filter_size_surf: 0.30
+   filter_size_surf_z: 0.30
+   filter_size_map: 0.30
