@@ -24,6 +24,7 @@ RUN cd /catkin_ws/src && git clone https://github.com/hku-mars/r3live.git && \
     catkin build r3live
 
 # Cleanup
-RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash\nsource /catkin_ws/devel/setup.bash" >> ~/.bashrc
+RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash\nsource /catkin_ws/devel/setup.bash" >> ~/.bashrc && \
+    rm -rf /catkin_ws/src/r3live
 
 CMD [ "/bin/bash" ]
