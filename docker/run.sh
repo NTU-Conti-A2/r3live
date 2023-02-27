@@ -16,4 +16,4 @@ docker run -it --rm --name r3live \
     -v $ROSBAG_FOLDER:/rosbags \
     -v $OUTPUT_FOLDER:/data \
     -v $R3LIVE_FOLDER:/catkin_ws/src/r3live \
-    --gpus all r3live:noetic bash
+    --gpus all r3live:melodic bash

@@ -1,2 +1,3 @@
 #!/bin/sh
-docker build -t r3live:noetic -f Dockerfile .
+cd ..
+docker build -t r3live:melodic -f docker/Dockerfile .

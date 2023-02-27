@@ -5,6 +5,7 @@ OUTPUT_FOLDER=/mnt/c/Users/Public/wsl_data
 
 # add --network=host if needed
 docker run -it --rm --name r3live \
+    --network=host \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
 	-v /mnt/wslg:/mnt/wslg \
     -v /usr/lib/wsl:/usr/lib/wsl \
@@ -17,4 +18,4 @@ docker run -it --rm --name r3live \
     -v $ROSBAG_FOLDER:/rosbags \
     -v $OUTPUT_FOLDER:/data \
     -v $R3LIVE_FOLDER:/catkin_ws/src/r3live \
-    --gpus all r3live:noetic bash
+    --gpus all r3live:melodic bash
