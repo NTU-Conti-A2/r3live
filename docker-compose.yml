@@ -1,0 +1,35 @@
+version: '3'
+services:
+  r3live:
+    stdin_open: true
+    tty: true
+    command: tail -f /dev/null
+    # command: zsh -c "roscore"
+    image: r3live:noetic
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    
+    user: "${UID}:${GID}"
+    volumes:
+      - $HOME/repo/r3live:/home/user/catkin_ws/src/r3live
+      - /mnt/c/Users/Public/rosbags:/home/user/rosbags
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /mnt/wslg:/mnt/wslg
+      - /usr/lib/wsl:/usr/lib/wsl
+    
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=graphics,utility,compute
+      - DISPLAY=${DISPLAY}
+      - XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR
+      - WAYLAND_DISPLAY=$WAYLAND_DISPLAY
+      - LD_LIBRARY_PATH=/usr/lib/wsl/lib
+  

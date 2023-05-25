@@ -1,0 +1,67 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/ubuntu
+{
+
+	"name": "r3live",
+	
+	// for loading image without using dockerfile (can only have either image or dockerfile)
+	// "image": "ubuntu:22.04",
+
+	// if using docker-compose
+	"dockerComposeFile": "../docker-compose.yml",
+	"service": "r3live",
+	"workspaceFolder": "/home/user/catkin_ws",
+	"shutdownAction": "stopCompose",
+
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "uname -a",
+	
+	// for bind mounting volume without using docker-compose
+	// "mounts": ["source=/home/dawei/repo/test-dev-container/test-folder,target=/root/workspace,type=bind,consistency=cached"],
+
+	"settings": {
+		"terminal.integrated.profiles.linux": {
+			"zsh": {
+				"path": "/bin/zsh"
+			}
+		},
+		"terminal.integrated.defaultProfile.linux": "zsh",
+		"python.linting.pylintEnabled": true,
+		"python.linting.enabled": false,
+		"python.linting.flake8Enabled": false,
+		"python.formatting.provider": "autopep8",
+		"python.analysis.extraPaths": [
+			"/home/user/.local/lib/python3/site-packages"
+		],
+		"python.defautInterpreterPath": "/usr/bin/python3"
+	},
+
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "user",
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.cpptools",
+				"ms-vscode.cpptools-extension-pack",
+				"njpwerner.autodocstring",
+				"cschlosser.doxdocgen",
+				"mhutchie.git-graph",
+				"eamodio.gitlens",
+				"DavidAnson.vscode-markdownlint",
+				"shd101wyy.markdown-preview-enhanced",
+				"christian-kohler.path-intellisense",
+				"Gerrnperl.outline-map",
+				"ms-python.vscode-pylance",
+				"esbenp.prettier-vscode",
+				"ms-python.python",
+				"vscode-snippet.snippet",
+				"elazarcoh.simply-view-image-for-python-debugging"
+			]
+		}
+	}
+}
